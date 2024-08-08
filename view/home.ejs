@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Uploads</title>
+    <style>
+        /* Include the CSS code provided here */
+        /* Resetting some basic styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+form {
+    background-color: #ffffff;
+    padding: 20px 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+label {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+}
+
+label:hover {
+    background-color: #0056b3;
+}
+
+.file-name {
+    margin: 15px 0;
+    font-size: 14px;
+    color: #6c757d;
+}
+
+button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+    </style>
+</head>
+<body>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <label for="profileImage">Choose a file</label>
+        <input type="file" id="profileImage" name="profileImage" onchange="displayFileName()">
+        <div class="file-name" id="file-name">No file chosen</div>
+        <button type="submit">Upload</button>
+    </form>
+
+    <script>
+        function displayFileName() {
+            const input = document.getElementById('profileImage');
+            const fileNameDisplay = document.getElementById('file-name');
+            fileNameDisplay.textContent = input.files.length > 0 ? input.files[0].name : 'No file chosen';
+        }
+    </script>
+</body>
+</html>
